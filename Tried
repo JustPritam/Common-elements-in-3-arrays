@@ -1,0 +1,24 @@
+class Solution
+{
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        ArrayList<Integer> ar = new ArrayList<Integer>();
+        HashSet<Integer> a = new HashSet<>();
+        HashSet<Integer> b = new HashSet<>();
+        HashSet<Integer> c = new HashSet<>();
+        for(int i = 0; i < n1; i++)
+        a.add(A[i]);
+        for(int i = 0; i < n2; i++)
+        b.add(B[i]);
+        for(int i = 0; i < n3; i++)
+        c.add(C[i]);
+        for(int i = 0; i < n1; i++){
+            if(b.contains(A[i]) && c.contains(A[i])){
+                ar.add(A[i]);
+                b.remove(A[i]);  //after comparing with an element the element is deleted so that no comparison happens again with same element 
+                c.remove(A[i]);  //after comparing with an element the element is deleted so that no comparison happens again with same element 
+            }
+        }
+        return ar;
+    }
+}
